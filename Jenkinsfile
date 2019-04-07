@@ -12,7 +12,7 @@ pipeline {
 			   }
 			node('slave1') {
 			   sh label: '', script: 'sudo docker login -u admin -p admin123 54.213.128.20:8082'
-			   sh label: '', script: 'sudo docker push 54.213.128.20:8082/devi:1.0.2'
+			   sh label: '', script: 'sudo docker pull 54.213.128.20:8082/devi:1.0.2'
 			   sh label: '', script: 'sudo docker container run -it -d -p 9999:8080 devi:latest'
 			   }   
                
