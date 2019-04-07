@@ -7,13 +7,13 @@ pipeline {
                sh 'mvn clean package'
 			   sh label: '', script: 'sudo docker image build -t devi .'
 			   sh label: '', script: 'sudo docker login -u admin -p admin123 54.213.128.20:8082'
-			   sh label: '', script: 'sudo docker tag devi:latest 54.213.128.20:8082/devi:1.0.2'
-			   sh label: '', script: 'sudo docker push 54.213.128.20:8082/devi:1.0.2'
+			   sh label: '', script: 'sudo docker tag devi:latest 54.213.128.20:8082/devi:1.0.3'
+			   sh label: '', script: 'sudo docker push 54.213.128.20:8082/devi:1.0.3'
 			   }
 			node('slave1') {
 			   sh label: '', script: 'sudo docker login -u admin -p admin123 54.213.128.20:8082'
-			   sh label: '', script: 'sudo docker pull 54.213.128.20:8082/devi:1.0.2'
-			   sh label: '', script: 'sudo docker container run -it -d -p 9999:8080 devi:latest'
+			   sh label: '', script: 'sudo docker pull 54.213.128.20:8082/devi:1.0.3'
+			   sh label: '', script: 'sudo docker container run -it -d -p 9999:8080 devi:1.0.3'
 			   }   
                
             }
